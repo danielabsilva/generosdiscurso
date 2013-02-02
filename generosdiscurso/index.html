@@ -1,63 +1,152 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-	<meta charset="utf-8" />
-	<meta name="description" content="Visualizações de discursos com o termo mulheres e votações de projetos de lei relacionados a questões de gênero na Câmara dos Deputados - 2010 a 2012"/>
-	<meta name="keywords" content="cmsp, dados abertos, open data, camara, mulheres, genero, feminismo, discursos, votacao" />
-	<title>Gêneros do Discurso</title>
-	<!--<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Imprima' type='text/css'>
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Slackey' type='text/css'> -->
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" type="text/css" media="screen" />
-</head>
+<!doctype html>
+<html>
+  
+  <head>
+    <title>Gênero no Discurso</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.css"> 
+  </head>
+  
+  <body>
+    <div class="container">
+      <h1>Gênero no discurso
+              </h1>
+                            <p>Um projeto <strong>Transparência Hacker.</strong></p>
+      <ul class="nav nav-tabs">
+        <li class="active pull-right">
+          <a href="index.html">Início</a> 
+        </li>
+        <li class="pull-right">
+          <a href="filtros.html">Filtros</a> 
+        </li>
+        <li class="pull-right">
+          <a href="projetos.html">Projetos</a> 
+        </li>
+      </ul>
+      <section>
+      <div class="hero-unit">
+        <h1><strong>x</strong> deputados mencionaram o termo <strong>mulheres</strong> na câmara federal.
+          <br> 
+        </h1>
+        <p></p>
+      </div>
+      </section>
+      <section>
+      <h2 class="pull-left">Parlamentares</h2><br>
+      <table class="table">
+    <thead>
+      <tr>
+        <th>Menções
+          <br> 
+        </th>
+        <th>
+          <br> 
+        </th>
+        <th>Partido</th>
+        <th>Parlamentar
+          <br> 
+        </th>
+        <th>
+          <br> 
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>45
+          <br> 
+        </td>
+        <td>
+          <br> 
+        </td>
+        <td>PT</td>
+        <td>Fulano de Tal
+          <br> 
+        </td>
+        <td><a href="#myModal" role="button" class="btn" data-toggle="modal">Mais Informações</a>
 
-<body>
-	<div class="container">
-		<div id="header" class="masthead">
-			<h1 class="muted">Gêneros do Discurso</h1>
-			<h2 class="muted">as mulheres nos discursos da Câmara Federal</h2>
-		</div>
-		<div class="row">
-			<div id="filtros" class="span8 offset6">
-				<input id="filtro_parlamentares">
-				<input id="filtro_partidos">
-			</div>
-		</div>
-		<div id="visualizacao">
-			<span id="total_mencoes" class="jumbotron">
-				<h1>TOD@S mencionaram o termo MULHERES por X vezes na Câmara Federal de 2010 a 2012.</h2>
-			</span>
-			<span id="arvore">
-			</span>
-		</div>
-		<div id="mencoes">
-			<div id="mencao_parlamentar">
-				<img src="#">
-				<p>Dep. Fulano</p>
-				<p>X menções</p>
-				<p>termos correlatos</p>
-			</div>
-			<div id="mencao_parlamentar">
-				<img src="#">
-				<p>Dep. Fulano</p>
-				<p>X menções</p>
-				<p>termos correlatos</p>
-			</div>
-			<div id="mencao_parlamentar">
-				<img src="#">
-				<p>Dep. Fulano</p>
-				<p>X menções</p>
-				<p>termos correlatos</p>
-			</div>
-			<div id="votacoes">
-				<div id="pl">
-					<p>PL X</p>
-					<p>aprovado</p>
-					<p>50 sim</p>
-					<p>30 não</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
+            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Nome do parlamentar</h3>
+            </div>
+            <div class="modal-body">
+            <p>BLablablablablabla</p>
+            </div>
+            <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+            <button class="btn btn-primary">Download</button>
+            </div>
+            </div>
+
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <br> 
+        </td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>
+          <br> 
+        </td>
+        <td>PSTU</td>
+        <td>Beltrano da Silva
+          <br> 
+        </td>
+        <td><a href="#myModal" role="button" class="btn" data-toggle="modal">Mais Informações</a>
+
+            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Nome do parlamentar</h3>
+            </div>
+            <div class="modal-body">
+            <p>BLablablablablabla</p>
+            </div>
+            <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+            <button class="btn btn-primary">Download</button>
+            </div>
+            </div>
+
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <br> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+      <div class="pagination pagination-small pagination-centered">
+        <ul>
+          <li>
+            <a href="#">Prev</a> 
+          </li>
+          <li>
+            <a href="#">1</a> 
+          </li>
+          <li>
+            <a href="#">2</a> 
+          </li>
+          <li>
+            <a href="#">3</a> 
+          </li>
+          <li>
+            <a href="#">4</a> 
+          </li>
+          <li>
+            <a href="#">Next</a> 
+          </li>
+        </ul>
+      </div>
+      </section>
+      <footer> <center>Créditos + link de Topo</center></footer>
+         
+    </div>
+    <script src="https://app.divshot.com/js/jquery.min.js"></script>
+    <script src="https://app.divshot.com/js/bootstrap.min.js"></script>
+
+   <!--É hora de codar! -->
+
+  </body>
+
 </html>
-
