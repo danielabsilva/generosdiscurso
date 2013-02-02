@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.css"> 
     <link href='http://fonts.googleapis.com/css?family=Stint+Ultra+Condensed' rel='stylesheet' type='text/css'>
+    <script src="vendor/js/jquery.min.js"></script>
+    <script src="vendor/js/bootstrap.min.js"></script>
+    <script src="vendor/js/raphael.js"></script>
+    <script src="vendor/js/wordtree/word-tree-layout.js"></script>
+    <script src="vendor/js/wordtree/wordtree.js"></script>
+    <script src="vendor/js/tempo.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/misc.js"></script>
   </head>
   
   <body>
@@ -23,23 +31,23 @@
           <a href="index.html">Home</a> 
         </li>
       </ul>
-      <div class="row" style="margin-left: 0; margin-bottom: 10px">
-		<span class="span4" style="margin-left: 0;">
-		  <input class="input-large" type="text" value="Filtrar por PARTIDO" style="background-color: #8B8D8D; color: #FFFFFF; border-color: #8B8D8D">
-		  <a class="btn" style="vertical-align: top">ok</a>
+      <div id="filtros" class="row" style="margin-left: 0; margin-bottom: 10px;display:none">
+		<span id="orador_partido" class="span4" style="margin-left: 0;">
+		  <input class="input-large" type="text" placeholder="Filtrar por PARTIDO (desabilitado)" style="background-color: #8B8D8D; color: #FFFFFF; border-color: #8B8D8D">
+		  <button class="btn" style="vertical-align: top">ok</button>
 		 </span>
-		 <span class="span4" style="margin-left: 0" >
-		  <input class="input-large" type="text" value="Filtrar por ESTADO" style="background-color: #8B8D8D; color: #FFFFFF; border-color: #8B8D8D">
-		  <a class="btn" style="vertical-align: top">ok</a>
+		 <span id="orador_uf" class="span4" style="margin-left: 0" >
+		  <input class="input-large" type="text" placeholder="Filtrar por ESTADO (desabilitado)" style="background-color: #8B8D8D; color: #FFFFFF; border-color: #8B8D8D">
+		  <button class="btn" style="vertical-align: top">ok</button>
 		 </span>
-		 <span class="span4" style="margin-left: 0" >
-		  <input class="input-large" type="text" value="Filtrar por PARLAMENTAR" style="background-color: #8B8D8D; color: #FFFFFF; border-color: #8B8D8D">
-		  <a class="btn" style="vertical-align: top">ok</a>
+		 <span id="orador_nome" class="span4" style="margin-left: 0" >
+		  <input class="input-large" type="text" placeholder="Filtrar por PARLAMENTAR (desabilitado)" style="background-color: #8B8D8D; color: #FFFFFF; border-color: #8B8D8D">
+		  <button class="btn" style="vertical-align: top">ok</button>
 		 </span>
 	  </div>
       <section>
-      <div class="hero-unit">
-        <h1><strong>XXX</strong> menções à <strong>mulher</strong> na Câmara Federal por <strong>TOD@S</strong>
+      <div id="painel" class="hero-unit">
+        <h1><strong id="mencoes">000</strong> menções à <strong>mulher</strong> na Câmara Federal por <strong>TOD@S</strong>
           <br> 
         </h1>
         <p></p>
@@ -47,34 +55,23 @@
       </section>
       <section>
 
-      <table class="table">
+      <table class="table" id="papibaquigrafo">
     <thead>
       <tr>
-        <th>Parlamentar
-          <br> 
-        </th>
-        <th>
-          <br> 
-        </th>
-        <th>Partido</th>
-        <th>Menções
-          <br> 
-        </th>
-        <th>
-          <br> 
-        </th>
+        <th><center>Parlamentar</center></th>
+        <th><center>Partido</center></th>
+        <th><center>Menções</center></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Fulano de Tal
-          <br> 
+      <tr data-template>
+        <td>
+            {{orador_nome}}
         </td>
-        <td>PT</td>
-        <td>45
-          <br> 
-        </td>
-        <td><a href="#myModal" role="button" class="btn" data-toggle="modal">Mais Informações</a>
+        <td>
+            {{orador_partido}}
+            </td>
+        <td id="{{id}}"><!-- <a href="#myModal" role="button" class="btn" data-toggle="modal">Mais Informações</a> -->
 
             <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
@@ -91,39 +88,12 @@
             </div>
 
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <br> 
-        </td>
-      </tr>
-      <tr>
-        <td>Beltrano da Silva</td>
-        <td>PSTU</td>
-        <td>21
-          <br> 
-        </td>
-        <td><a href="#myModal" role="button" class="btn" data-toggle="modal">Mais Informações</a>
-
-            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Nome do parlamentar</h3>
-            </div>
-            <div class="modal-body">
-            <p>BLablablablablabla</p>
-            </div>
-            <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
-            <button class="btn btn-primary">Download</button>
-            </div>
-            </div>
-
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <br> 
         </td>
       </tr>
     </tbody>
   </table>
       <div class="pagination pagination-small pagination-centered">
-        <ul>
+        <!-- <ul>
           <li>
             <a href="#">Prev</a> 
           </li>
@@ -142,17 +112,85 @@
           <li>
             <a href="#">Next</a> 
           </li>
-        </ul>
+        </ul> -->
+        <i>infine loading... aguarde</i>
       </div>
       </section>
       <footer> <center>Um projeto da <strong><a href="http://groups.google.com/group/thackday">Transparência Hacker</a></strong> | <strong><a href="http://concurso.dadosgovernamentaisabertos.org">Hackathon - Dados Governamentais Abertos</a></strong>, Campus Party 2013</center></footer>
          
     </div>
-    <script src="https://app.divshot.com/js/jquery.min.js"></script>
-    <script src="https://app.divshot.com/js/bootstrap.min.js"></script>
-
    <!--É hora de codar! -->
+    <script>
+        $(document).ready(function() {
+            height = 35;
+            width = 768;
+            start = 0;
+            finish = 9;
+            var args = "mulher";
+            data = loadJson(SETTINGS['SERVER_ADDRESS'] + args);
+            tos = Tempo.prepare("papibaquigrafo");
+            tos.starting();
+            
+            function countDiscursos(data) {
+                var counter = 0;
+                $(data).each(function (index, d) {
+                    counter = counter + d.discursos.length;
+                });
+                return counter;
+            }
+                       
+            function loadDiscursos(data, start, finish) {
+                tos.append(data.slice(start, finish));
+                $(data.slice(start,finish)).each(function (index, d) {
+                    var context = "mulher";
+                    var data = tokenize(d.discursos.join("\n"), context);
+                    var tmp_height = (data['left'].length+data['right'].length)/2*height;
+                    if (tmp_height < 50) {
+                        tmp_height = 50;
+                    }
+                    if (tmp_height > 500) {
+                        tmp_height = 500;
+                    }
+                    createTree(data, context, d.id, tmp_height, width);
+                });
+            }
+            
+            //hackish
+            counter = countDiscursos(data);
+            $("#mencoes").text(counter);
+            
+            loadDiscursos(data, start, finish);
+            $("#load-more").click(function () {
+                start = finish;
+                finish = finish + 10;
+                loadDiscursos(data, start, finish);
+            });
+            
+            $(window).scroll(function() {
 
+                if ( $(window).scrollTop() >= ( $(document).height() - $(window).height() ) ) {
+                    start = finish;
+                    finish = finish + 10;
+                    loadDiscursos(data, start, finish);
+                }
+
+            });
+            
+            function filtro(contexto, valor) {
+                var sliced_data = [];
+                $(data).each(function (index, d) {
+                    if (d[contexto] == valor) {
+                        sliced_data.push(d);
+                        }
+                    });
+                return sliced_data;
+                }
+                
+        $("#filtros input").prop('disabled', true);
+        $("#filtros .btn").prop('disabled', true);
+
+        });
+    </script>
   </body>
 
 </html>
